@@ -1,1 +1,28 @@
 https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/
+
+
+
+{
+    public static void main(String[] args) throws Exception {
+
+        CLibrary1 clib = CLibrary1.INSTANCE;
+
+        System.out.println("测试返回结果："+clib.add(4, 13));
+
+        System.out.println("测试返回结果："+clib.getString("this is java param.","hello"));
+
+
+    }
+}
+
+interface CLibrary1 extends Library {
+
+    CLibrary1 INSTANCE = (CLibrary1) Native.loadLibrary("E:\\myProjects\\csharp\\dll\\CUtil", CLibrary1.class);
+
+    /*需要调用的方法,方法名与c++方法名相同*/
+
+    int add(int a,int b);
+
+    String getString(String str1,String str2);
+
+}
